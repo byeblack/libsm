@@ -32,33 +32,31 @@ pub struct Point {
     pub z: FieldElem,
 }
 
-fn g_table() -> Vec<Vec<Point>> {
-    let ctx = EccCtx::new();
-    let mut init = BigUint::one();
-    let radix = BigUint::from(256_u32);
-    let mut table: Vec<Vec<Point>> = Vec::new();
-    let mut num: Vec<BigUint> = Vec::new();
+// fn g_table() -> Vec<Vec<Point>> {
+//     let ctx = EccCtx::new();
+//     let mut init = BigUint::one();
+//     let radix = BigUint::from(256_u32);
+//     let mut table: Vec<Vec<Point>> = Vec::new();
+//     let mut num: Vec<BigUint> = Vec::new();
 
-    for i in 0..256 {
-        num.push(BigUint::from(i as u32));
-    }
+//     for i in 0..256 {
+//         num.push(BigUint::from(i as u32));
+//     }
 
-    for _i in 0..32 {
-        let mut table_row: Vec<Point> = Vec::new();
-        for item in num.iter().take(256) {
-            let t = item * &init;
-            let p1 = ctx.mul(&t, &ctx.generator().unwrap()).unwrap();
-            table_row.push(p1);
-        }
-        table.push(table_row);
-        init *= &radix;
-    }
-    table
-}
+//     for _i in 0..32 {
+//         let mut table_row: Vec<Point> = Vec::new();
+//         for item in num.iter().take(256) {
+//             let t = item * &init;
+//             let p1 = ctx.mul(&t, &ctx.generator().unwrap()).unwrap();
+//             table_row.push(p1);
+//         }
+//         table.push(table_row);
+//         init *= &radix;
+//     }
+//     table
+// }
 
-lazy_static! {
-    static ref TABLE: Vec<Vec<Point>> = g_table();
-}
+use super::pretable::TABLE;
 
 impl EccCtx {
     pub fn new() -> EccCtx {

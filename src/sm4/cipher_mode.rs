@@ -272,8 +272,7 @@ mod tests {
 
     fn rand_data(len: usize) -> Vec<u8> {
         let mut rng = rand::thread_rng();
-        let mut dat: Vec<u8> = Vec::new();
-        dat.resize(len, 0);
+        let mut dat: Vec<u8> = vec![0; len];
         rng.fill_bytes(&mut dat[..]);
         dat
     }

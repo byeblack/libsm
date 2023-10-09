@@ -5,7 +5,7 @@ authors = [
     "Tang Zongxun <tangzongxun@hotmail.com>",
     "Niu Junxiang <494521900@qq.com>",
     "yieazy <yuitta@163.com>",
-    "Rivtower Technologies <contact@rivtower.com>"
+    "Rivtower Technologies <contact@rivtower.com>",
 ]
 description = "A Rust Library of China's Standards of Encryption Algorithms (SM2/3/4)"
 keywords = ["cipher", "cryptography"]
@@ -14,17 +14,13 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8"
-byteorder = "1.0"
+byteorder = "1.5"
 num-bigint = "0.4"
 num-traits = "0.2"
 num-integer = "0.1"
-yasna = { version = "0.5", features = [ "num-bigint" ]}
-lazy_static = "1.0"
+yasna = { version = "0.5", features = ["num-bigint"] }
 getrandom = { version = "0.2", features = ["js"] }
 
 [dev-dependencies]
 hex = "0.4"
 base64 = "0.21"
-
-[features]
-internal_benches = []
